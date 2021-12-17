@@ -4,6 +4,24 @@ import com.univpm.EsameOOP.model.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
+//lib di fede
+
+
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Service;
 //import java.sql.Date;
 
 import org.json.simple.JSONObject;
@@ -56,18 +74,20 @@ public class ServiceImplementation implements  com.univpm.EsameOOP.services.Serv
 
 		double speed=(double) obj2.get("speed");
 		int degrees=(int) obj2.get("deg");
-		double gust=(double) obj2.get("gust");
+		//double gust=(double) obj2.get("gust");
 		
         int time=(int) obj.get("dt");
 		String formattedTime=UNIXConverter(time);
 
 		obj3.put("Speed", speed);
 		obj3.put("Degrees", degrees);
-		obj3.put("Gust", gust);
+	//obj3.put("Gust", gust);
 		obj3.put("Date", formattedTime);
 		return obj3;
-		
+	
 	}
+	
+	
 	
 	public JSONObject getVisibilityAndWind(String city)
 	{
@@ -78,7 +98,7 @@ public class ServiceImplementation implements  com.univpm.EsameOOP.services.Serv
 
 		double speed=(double) obj2.get("speed");
 		int degrees=(int) obj2.get("deg");
-		double gust=(double) obj2.get("gust");
+		//double gust=(double) obj2.get("gust");
 		
         int time=(int) obj.get("dt");
 		String formattedTime=UNIXConverter(time);
@@ -86,13 +106,80 @@ public class ServiceImplementation implements  com.univpm.EsameOOP.services.Serv
 		int visibility=(int)obj.get("visibility");
 		obj3.put("Speed", speed);
 		obj3.put("Degrees", degrees);
-		obj3.put("Gust", gust);
+		//obj3.put("Gust", gust);
 		obj3.put("Visibility",visibility);
 		obj3.put("Date", formattedTime);
+		obj3.toString();
 		return obj3;
 		
+		
 	}
+	
+	public String save(String city) throws IOException
+	{
+		
+        
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		String today = date.format(new Date());
+        
+	
+		String nFile=city+"."+today+".txt";
+		
+		
+		
+        JSONObject CITY=getVisibilityAndWind( city);
+        
+
+			try{
+					
+				File file_out=new File(nFile);
+				
+						if(file_out.exists())
+							{
+							FileOutputStream existing_file= new FileOutputStream(nFile,true);
+							PrintWriter scrivi= new PrintWriter(existing_file);
+							scrivi.append(CITY.toString()+"\n");
+							scrivi.close();
+						
+							}
+						else 
+							{
+								file_out.createNewFile();
+								PrintWriter scrivi= new PrintWriter(file_out);
+								scrivi.print(nFile+"\n");
+								scrivi.append(CITY.toString()+"\n");
+								scrivi.close();
+									
+							}
+	
+				}catch (IOException e) {System.out.println("error");};
+				
+ 
+	return nFile;
+	}
+	public String savehour(String city)
+	{
+		ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+		scheduler.scheduleAtFixedRate(new Runnable() 
+		{
+		    @Override
+		    public void run() {
+		    	
+		    	
+		    	try {
+					save(city);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		 }, 0, 1, TimeUnit.HOURS);
+		return "fatto";
+	}
+	
+
 	
 	
 	
 }
+
