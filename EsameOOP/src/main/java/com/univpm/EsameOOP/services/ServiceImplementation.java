@@ -104,8 +104,6 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		String today = date.format(new Date());
 
 
-
-
 		String nFile=city+"."+today+".txt";
 		String path=System.getProperty("user.dir")+nFile;
 
