@@ -14,7 +14,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.web.client.RestTemplate;
 
-
 @Service
 public class ServiceImplementation implements com.univpm.EsameOOP.services.Service {
 
