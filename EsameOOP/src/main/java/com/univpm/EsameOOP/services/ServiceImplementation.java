@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 public class ServiceImplementation implements com.univpm.EsameOOP.services.Service {
 
 	private String ApiKey="32469d04fb266e14e1d1f0d15a2599e8";
+	
 	public JSONObject getGeneralWeather(String city)
 	{
 		JSONObject obj;
