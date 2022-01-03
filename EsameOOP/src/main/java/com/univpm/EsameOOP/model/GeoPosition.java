@@ -1,20 +1,20 @@
 package com.univpm.EsameOOP.model;
 
 public class GeoPosition extends Coordinates{
-	private long id;
+	private int id;
 	
-	public GeoPosition(Coordinates coordinates, long id)
+	public GeoPosition(Coordinates coordinates, int id)
 	{
 		super(coordinates.getLatitude(),coordinates.getLongitude());
 		this.id=id;
 	}
 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

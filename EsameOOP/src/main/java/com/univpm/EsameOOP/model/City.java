@@ -5,13 +5,14 @@ public class City extends GeoPosition{
 	private String name;
 	private String country;
 	private ArrayList<Weather> predictions = new ArrayList<>();
-	public City(Coordinates coordinates, long id, String name, String country)
+	public City(Coordinates coordinates, int id, String name, String country)
 	{
 		super(coordinates, id);
 		this.country=country;
 		this.name=name;
 		
 	}
+	
 	public String getName() {
 		return name;
 	}

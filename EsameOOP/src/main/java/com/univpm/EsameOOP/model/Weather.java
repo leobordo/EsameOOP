@@ -2,20 +2,30 @@ package com.univpm.EsameOOP.model;
 
 public class Weather extends Wind{
 
-	private long visibilty;
+	private int visibilty;
+	private String date;
 	
 
-	public Weather(float degrees, float gust, float speed,long visibilty) {
+	public Weather(float degrees, float gust, float speed,int visibilty,String date) {
 		super(degrees, gust, speed);
 		// TODO Auto-generated constructor stub
 		this.visibilty=visibilty;
+		this.date=date;
 	}
 
-	public long getVisibilty() {
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getVisibilty() {
 		return visibilty;
 	}
 
-	public void setVisibilty(long visibilty) {
+	public void setVisibilty(int visibilty) {
 		this.visibilty = visibilty;
 	}
 

@@ -1,28 +1,28 @@
 package com.univpm.EsameOOP.model;
 
 public class Coordinates {
-	private long latitude;
-	private long longitude;
+	private double latitude;
+	private double longitude;
 	
-	public Coordinates(long latitude, long longitude)
+	public Coordinates(double latitude, double longitude)
 	{
 		this.latitude=latitude;
 		this.longitude=longitude;
 	}
 
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 

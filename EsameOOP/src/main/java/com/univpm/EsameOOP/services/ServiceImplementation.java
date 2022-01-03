@@ -9,7 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
 //import java.sql.Date;
-
+import com.univpm.EsameOOP.model.*;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.web.client.RestTemplate;
@@ -71,7 +71,24 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		obj3.put("Gust", gust);
 		return obj3;
 	}
-	public JSONObject getVisibilityAndWind(String city)
+	public City createCity(String city)
+	{
+		JSONObject obj=getGeneralWeather(city);
+		LinkedHashMap map1=new LinkedHashMap<>();
+		map1=(LinkedHashMap) obj.get("coord");
+		double lon=(double)map1.get("lon");
+		double lat=(double)map1.get("lat");
+		Coordinates coord=new Coordinates(lat,lon);
+		LinkedHashMap map2=new LinkedHashMap<>();
+		map2=(LinkedHashMap) obj.get("sys");
+		String country=(String) map2.get("country");
+		int id=(int) obj.get("id");
+		City newCity=new City(coord,id,city,country);
+		return newCity;
+		
+		
+	}
+	public City getVisibilityAndWind(String city)
 	{
 		JSONObject obj=getGeneralWeather(city);
 		LinkedHashMap obj2=new LinkedHashMap<>();
@@ -87,12 +104,15 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		int time=(int) obj.get("dt");
 		String formattedTime=UNIXConverter(time);
 		int visibility=(int) obj.get("visibility");
-		obj3.put("Speed", speed);
-		obj3.put("Degrees", degrees);
-		obj3.put("Gust", gust);
-		obj3.put("Visibility", visibility);
-		obj3.put("Date", formattedTime);
-		return obj3;
+		Weather prediction =new Weather((float)degrees,(float)gust,(float)speed,visibility,formattedTime);
+		//obj3.put("Speed", speed);
+		//obj3.put("Degrees", degrees);
+		//obj3.put("Gust", gust);
+		//obj3.put("Visibility", visibility);
+		//obj3.put("Date", formattedTime);
+		City cc=createCity(city);
+		cc.getPredictions().add(prediction);
+		return cc;
 
 	}
 
@@ -104,13 +124,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		String today = date.format(new Date());
 
 
-
-
 		String nFile=city+"."+today+".txt";
 		String path=System.getProperty("user.dir")+nFile;
 
 
-		JSONObject CITY=getVisibilityAndWind( city);
+		City CITY=getVisibilityAndWind(city);
 		
 
 		try{
@@ -121,11 +139,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 			{
 				FileOutputStream existing_file= new FileOutputStream(nFile,true);
 				PrintWriter scrivi= new PrintWriter(existing_file);
-				scrivi.append("Speed : "+CITY.get("Speed")+"\n");
-				scrivi.append("Degrees : "+CITY.get("Degrees")+"\n");
-				scrivi.append("Gust : "+CITY.get("Gust")+"\n");
-				scrivi.append("Visibility : "+CITY.get("Visibility")+"\n");
-				scrivi.append("Data : "+CITY.get("Date")+"\n");
+				scrivi.append("Speed : "+CITY.getPredictions().get(0).getSpeed()+"\n");
+				scrivi.append("Degrees : "+CITY.getPredictions().get(0).getDegrees()+"\n");
+				scrivi.append("Gust : "+CITY.getPredictions().get(0).getGust()+"\n");
+				scrivi.append("Visibility : "+CITY.getPredictions().get(0).getVisibilty()+"\n");
+				scrivi.append("Data : "+CITY.getPredictions().get(0).getDate()+"\n");
 				scrivi.close();
 
 			}
@@ -134,11 +152,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 				file_out.createNewFile();
 				PrintWriter scrivi= new PrintWriter(file_out);
 				scrivi.print(nFile+"\n");
-				scrivi.append("Speed : "+CITY.get("Speed")+"\n");
-				scrivi.append("Degrees : "+CITY.get("Degrees")+"\n");
-				scrivi.append("Gust : "+CITY.get("Gust")+"\n");
-				scrivi.append("Visibility : "+CITY.get("Visibility")+"\n");
-				scrivi.append("Data : "+CITY.get("Date")+"\n");
+				scrivi.append("Speed : "+CITY.getPredictions().get(0).getSpeed()+"\n");
+				scrivi.append("Degrees : "+CITY.getPredictions().get(0).getDegrees()+"\n");
+				scrivi.append("Gust : "+CITY.getPredictions().get(0).getGust()+"\n");
+				scrivi.append("Visibility : "+CITY.getPredictions().get(0).getVisibilty()+"\n");
+				scrivi.append("Data : "+CITY.getPredictions().get(0).getDate()+"\n");
 				scrivi.close();
 
 			}
