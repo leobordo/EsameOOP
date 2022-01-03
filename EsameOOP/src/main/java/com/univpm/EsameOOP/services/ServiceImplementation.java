@@ -166,6 +166,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 		return nFile;
 	}
+	// metodo per salvare ogni ora
 	public String savehour(String city)
 	{
 		ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
