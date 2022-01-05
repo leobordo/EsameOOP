@@ -19,6 +19,8 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 	private String ApiKey="32469d04fb266e14e1d1f0d15a2599e8";
 	
+
+
 	public JSONObject getGeneralWeather(String city)
 	{
 		JSONObject obj;
@@ -130,7 +132,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 		City CITY=getVisibilityAndWind(city);
 		
-
+		
 		try{
 
 			File file_out=new File(nFile);
@@ -183,12 +185,14 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 					e.printStackTrace();
 				}
 			}
-		}, 0, 1, TimeUnit.HOURS);
+		}, 0, 5, TimeUnit.SECONDS);
 		return "fatto";
 	}
 	public JSONObject readData(String fileName) throws IOException
 	{
-		String path=System.getProperty("user.dir")+"\\" + fileName+".txt";
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		String today = date.format(new Date());
+		String path=System.getProperty("user.dir")+"\\" + fileName+"."+today+".txt";
 		//String path="C:\\Users\\bordo\\Desktop\\Esame\\EsameOOP\\"+fileName+".txt";
 		int cont=0;
 		int cont2=1;
@@ -231,4 +235,6 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		jsonObject3.put("Predictions", jsonObject2);
 		return jsonObject3;	
 	}
+	
+
 }
