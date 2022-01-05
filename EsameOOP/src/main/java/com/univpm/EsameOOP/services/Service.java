@@ -16,8 +16,8 @@ public interface Service {
 	public abstract City getVisibilityAndWind(String city);
 	public abstract String save(String city) throws IOException;
 	public abstract String savehour(String city);
-	public abstract JSONObject readData(String fileName) throws IOException;
-	public City createCity(String city);
+	public abstract JSONObject readData(String fileName, String day) throws IOException;
+	public abstract City createCity(String city);
 	
 	//DESCRIZIONE ANDAMENTO PROGETTO: 
 	//LE STATISTICHE SI FANNO SOLO SU UN GIORNO(NON FUTURO),SU UNA FASCIA ORARIA(DI UN GIORNO O DI G. PASSATI)

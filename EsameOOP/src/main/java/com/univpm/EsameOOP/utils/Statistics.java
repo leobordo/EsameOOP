@@ -13,7 +13,7 @@ import com.univpm.EsameOOP.services.ServiceImplementation;
 
 public class Statistics {
 	
-	public JSONObject today(String cityname)
+	public JSONObject dailyStats(String cityname, String day)
 	{
 			ServiceImplementation s= new ServiceImplementation();
 		
@@ -29,7 +29,7 @@ public class Statistics {
 			JSONObject obj=null;
 			JSONArray obj2=null;
 		try {
-				obj = s.readData(cityname);//il try serve a obj e basta
+				obj = s.readData(cityname, day);//il try serve a obj e basta
 				obj2=(JSONArray) obj.get("Predictions");
 			} catch (IOException e)
 		{
@@ -64,6 +64,7 @@ public class Statistics {
 	
 	return objreturn;
 	}
+	public 
 	
 
 

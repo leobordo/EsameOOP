@@ -188,11 +188,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		}, 0, 5, TimeUnit.SECONDS);
 		return "fatto";
 	}
-	public JSONObject readData(String fileName) throws IOException
+	public JSONObject readData(String fileName, String day) throws IOException
 	{
-		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-		String today = date.format(new Date());
-		String path=System.getProperty("user.dir")+"\\" + fileName+"."+today+".txt";
+		//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		//String today = date.format(new Date());
+		String path=System.getProperty("user.dir")+"\\" + fileName+"."+day+".txt";
 		//String path="C:\\Users\\bordo\\Desktop\\Esame\\EsameOOP\\"+fileName+".txt";
 		int cont=0;
 		int cont2=1;
@@ -201,7 +201,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		JSONObject jsonObject=new JSONObject();
 		JSONObject jsonObject3=new JSONObject();
 		JSONArray jsonObject2=new JSONArray();
-		jsonObject3.put("FileName", fileName+".txt");
+		jsonObject3.put("FileName", fileName+"."+day+".txt");
 		BufferedReader filebuf= new BufferedReader(new FileReader(path));
 		String [] words;
 		try {control=filebuf.readLine();
