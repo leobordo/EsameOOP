@@ -35,20 +35,20 @@ public class controller {
 	}
 
 @GetMapping(value="/readdata")//ciao
-public ResponseEntity<Object> readData(@RequestParam String param1) throws IOException  {
+public ResponseEntity<Object> readData(@RequestParam String param1,String param2) throws IOException  {
 	
 
 	
 	
-	return new ResponseEntity<> (si.readData(param1), HttpStatus.OK);
+	return new ResponseEntity<> (si.readData(param1,param2), HttpStatus.OK);
 }
 @GetMapping(value="/leggi")//ciao
-public ResponseEntity<Object> today(@RequestParam String param1) throws IOException  {
+public ResponseEntity<Object> today(@RequestParam String param1,String param2,String param3) throws IOException  {
 	
 
 	
 	
-	return new ResponseEntity<> (a.today(param1), HttpStatus.OK);
+	return new ResponseEntity<> (a.dailyStatsPlus(param1, param2,param3), HttpStatus.OK);
 }
 
 }

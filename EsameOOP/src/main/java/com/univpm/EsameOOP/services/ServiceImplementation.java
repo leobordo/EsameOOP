@@ -193,6 +193,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 		//String today = date.format(new Date());
 		String path=System.getProperty("user.dir")+"\\" + fileName+"."+day+".txt";
+		
 		//String path="C:\\Users\\bordo\\Desktop\\Esame\\EsameOOP\\"+fileName+".txt";
 		int cont=0;
 		int cont2=1;
