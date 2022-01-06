@@ -1,6 +1,6 @@
 package com.univpm.EsameOOP.controller;
 import com.univpm.EsameOOP.services.ServiceImplementation;
-import com.univpm.EsameOOP.utils.Statistics;
+import com.univpm.EsameOOP.utils.*;
 import org.springframework.stereotype.Service ;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +22,7 @@ public class controller {
 	
 	ServiceImplementation si;
 	Statistics a=new Statistics();
+	Filters f=new Filters();
 	 
 	
 
@@ -43,12 +44,12 @@ public ResponseEntity<Object> readData(@RequestParam String param1,String param2
 	return new ResponseEntity<> (si.readData(param1,param2), HttpStatus.OK);
 }
 @GetMapping(value="/leggi")//ciao
-public ResponseEntity<Object> today(@RequestParam String param1,String param2,String param3) throws IOException  {
+public ResponseEntity<Object> today(@RequestParam String param1,String param2,String param3, String param4) throws IOException  {
 	
 
 	
 	
-	return new ResponseEntity<> (a.dailyStatsPlus(param1, param2,param3), HttpStatus.OK);
+	return new ResponseEntity<> (f.choice(param1, param2, param3, param4), HttpStatus.OK);
 }
 
 }
