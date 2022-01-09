@@ -26,30 +26,33 @@ public class controller {
 	 
 	
 
-	@GetMapping(value="/saveEveryHour")//ciao
-    public ResponseEntity<Object> saveHour(@RequestParam String param1) throws IOException  {
+	@GetMapping(value="/General")
+    public ResponseEntity<Object> getGeneralWeather(@RequestParam String cityname) throws IOException  {
 		
-	
-		
-		
-		return new ResponseEntity<> (si.savehour(param1), HttpStatus.OK);
+		return new ResponseEntity<> (si.getGeneralWeather(cityname), HttpStatus.OK);
 	}
 
-@GetMapping(value="/readdata")//ciao
-public ResponseEntity<Object> readData(@RequestParam String param1,String param2) throws IOException  {
+	@GetMapping(value="/GetWind")
+	public ResponseEntity<Object> getWind(@RequestParam String cityname) throws IOException  {
 	
+		return new ResponseEntity<> (si.getWind(cityname), HttpStatus.OK);
+	}
 
+	@GetMapping(value="/GetVisibility")
+	public ResponseEntity<Object> getVisibility(@RequestParam String cityname) throws IOException  {
 	
+		return new ResponseEntity<> (si.getVisibility(cityname), HttpStatus.OK);
+	}
 	
-	return new ResponseEntity<> (si.readData(param1,param2), HttpStatus.OK);
-}
-@GetMapping(value="/leggi")//ciao
-public ResponseEntity<Object> today(@RequestParam String param1,String param2,String param3, String param4) throws IOException  {
+	@GetMapping(value="/SaveHour")
+	public ResponseEntity<Object> savehour(@RequestParam String cityname) throws IOException  {
 	
-
+		return new ResponseEntity<> (si.savehour(cityname), HttpStatus.OK);
+	}
 	
+	@GetMapping(value="/Filters")
+	public ResponseEntity<Object> choice(@RequestParam String cityname, String dayI, String dayF, String period) throws IOException  {
 	
-	return new ResponseEntity<> (f.choice(param1, param2, param3, param4), HttpStatus.OK);
-}
-
+		return new ResponseEntity<> (f.choice(cityname, dayI, dayF, period), HttpStatus.OK);
+	}
 }
