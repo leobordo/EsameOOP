@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.univpm.EsameOOP.exception.CityErrorException;
 import com.univpm.EsameOOP.model.City;
 
 public interface Service {

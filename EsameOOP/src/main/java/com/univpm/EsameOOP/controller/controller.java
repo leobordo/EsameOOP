@@ -1,4 +1,8 @@
 package com.univpm.EsameOOP.controller;
+import com.univpm.EsameOOP.exception.CityErrorException;
+import com.univpm.EsameOOP.exception.CustomNumberErrorException;
+import com.univpm.EsameOOP.exception.DayErrorException;
+import com.univpm.EsameOOP.exception.HourErrorException;
 import com.univpm.EsameOOP.services.ServiceImplementation;
 import com.univpm.EsameOOP.utils.*;
 import org.springframework.stereotype.Service ;
@@ -47,12 +51,40 @@ public class controller {
 	@GetMapping(value="/SaveHour")
 	public ResponseEntity<Object> savehour(@RequestParam String cityname) throws IOException  {
 	
+		
 		return new ResponseEntity<> (si.savehour(cityname), HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/Filters")
-	public ResponseEntity<Object> choice(@RequestParam String cityname, String dayI, String dayF, String period) throws IOException  {
 	
+	@GetMapping(value="/Filters")
+	public ResponseEntity<Object> choice(@RequestParam String cityname, String dayI, String dayF, String period) 
+	
+	throws HourErrorException,CityErrorException,DayErrorException, IOException, CustomNumberErrorException, NumberFormatException
+	{
+		
+	try {
+		
 		return new ResponseEntity<> (f.choice(cityname, dayI, dayF, period), HttpStatus.OK);
+	}catch(NumberFormatException e)
+	{
+		
+		e= new NumberFormatException("usa solo numeri");
+		
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+	}
+	catch(HourErrorException e)
+	{
+		return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
+	}
+	
+	catch(CityErrorException e)
+	{
+		return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
+	}
+	catch(DayErrorException e)
+	{
+		return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
+	}
+		
 	}
 }

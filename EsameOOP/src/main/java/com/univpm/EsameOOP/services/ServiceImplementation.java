@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
+
+
 //import java.sql.Date;
 import com.univpm.EsameOOP.model.*;
 import org.json.simple.JSONObject;
@@ -21,8 +23,9 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 	
 
 
-	public JSONObject getGeneralWeather(String city)
+	public JSONObject getGeneralWeather(String city) 
 	{
+		
 		JSONObject obj;
 		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + ApiKey;
 
@@ -40,9 +43,9 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		String formattedDate = sdf.format(date);
 		return formattedDate;
 	}
-	public JSONObject getVisibility(String city)
+	public JSONObject getVisibility(String city) 
 	{
-		JSONObject obj=getGeneralWeather(city);
+		JSONObject obj=getGeneralWeather(city) ;
 		int visibility=(int) obj.get("visibility");
 
 		int time=(int) obj.get("dt");
