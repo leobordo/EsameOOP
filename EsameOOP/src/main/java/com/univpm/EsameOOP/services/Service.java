@@ -2,12 +2,16 @@ package com.univpm.EsameOOP.services;
 
 import java.io.IOException;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
-import com.univpm.EsameOOP.exception.CityErrorException;
+import com.univpm.EsameOOP.exception.*;
 import com.univpm.EsameOOP.model.City;
 
+/**
+ * Interfaccia implementata da ServiceImpl
+ * Contiene alcuni dei metodi richiamati dal controller
+ * @author Leonardo Bordoni
+ *@author Samuele Di Summa
+ */
 public interface Service {
 
 	public abstract JSONObject getGeneralWeather(String city);
@@ -19,10 +23,4 @@ public interface Service {
 	public abstract String savehour(String city);
 	public abstract JSONObject readData(String fileName, String day) throws IOException;
 	public abstract City createCity(String city);
-	
-	//DESCRIZIONE ANDAMENTO PROGETTO: 
-	//LE STATISTICHE SI FANNO SOLO SU UN GIORNO(NON FUTURO),SU UNA FASCIA ORARIA(DI UN GIORNO O DI G. PASSATI)
-	//IL CONTROLLER QUINDI AVRà UNA ROTTA DIVERSA A SECONDA CHE LE STATISTICHE SIANO IN UNA FASCIA ORARIA
-	//O NEL GIORNO STESSO, INOLTRE BISOGNERà VEDERE SE CI RIFERISCE AD UN GIORNO PASSATO,PIù GIORNI PASSATI,
-	//O AL GIORNO STESSO.
 }

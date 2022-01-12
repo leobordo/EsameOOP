@@ -11,8 +11,21 @@ import  com.univpm.EsameOOP.model.*;
 import com.univpm.EsameOOP.services.ServiceImplementation;
 
 
+/**
+ * Classe che sviluppa le statistiche dei dati presi in esame
+ * @author Leonardo Bordoni
+ * @author Samuele Di Summa
+ *
+ */
 public class Statistics {
 
+	/**
+	 * Metodo che esegue le statistiche di vento e raffiche su un intera giornata. 
+	 * Il metodo calcola velocità del vento max, min e media; velocità delle raffiche max,min e media
+	 * @param cityname nome della città di cui si vogliono le statistiche
+	 * @param day giorno di cui si vogliono le statistiche
+	 * @return un JSONObject contenente le statistiche sopra descritte
+	 */
 	public JSONObject dailyStats(String cityname, String day)
 	{
 		ServiceImplementation s= new ServiceImplementation();
@@ -66,7 +79,15 @@ public class Statistics {
 	}
 	
 
-	public JSONObject dailyStatsPlus(String cityname, String day,String period) throws HourErrorException 
+	/**
+	 * Metodo che calcola le statistiche di vento e raffiche su una certa fascia oraria.
+	 * Il metodo calcola velocità del vento max, min e media; velocità delle raffiche max,min e media
+	 * @param cityname nome della città di cui si vogliono le statistiche
+	 * @param day giorno di cui si vogliono le statistiche
+	 * @param period fascia oraria di cui si vogliono le statistiche
+	 * @return un JSONObject contenente le statistiche sopra descritte
+	 */
+	public JSONObject dailyStatsPlus(String cityname, String day,String period)
 	{
 		ServiceImplementation s= new ServiceImplementation();
 		

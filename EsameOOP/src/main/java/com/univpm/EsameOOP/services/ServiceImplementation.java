@@ -16,13 +16,25 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Classe che implementa Service andando a definire i metodi usati nel controller
+ * @author Leonardo Bordoni
+ * @author Samuele di Summa
+ */
 @Service
 public class ServiceImplementation implements com.univpm.EsameOOP.services.Service {
 
+	/**
+	 * Key usata per fare le chiamte ad OpenWeather.L'Api usata si chiama Current, non prevedeva 
+	 * previsoni meteo future ma solo attuali.
+	 */
 	private String ApiKey="32469d04fb266e14e1d1f0d15a2599e8";
 	
-
-
+	/**
+	 * Metodo che ritorna un JSONObject contenente tutte le informazioni date da OpenWeather di una determinata città
+	 * @param city il nome della città
+	 * @return un JSONObject contenente le informazioni descritte sopra
+	 */
 	public JSONObject getGeneralWeather(String city) 
 	{
 		
@@ -35,6 +47,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 		return obj;
 	}
+	/**
+	 * Meotodo che converte le date dal formato UNIX a quello standard
+	 * @param time la data UNIX che si vuole convertire
+	 * @return la data nel formato standard
+	 */
 	public String UNIXConverter(int time)
 	{
 		Date date = new Date(time*1000L); 
@@ -43,6 +60,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		String formattedDate = sdf.format(date);
 		return formattedDate;
 	}
+	/**
+	 * Metodo che serve a ritornare solo le informazioni riguardanti la visibilità in una città
+	 * @param city nome della città
+	 * @return un JSONObject contente solo la data della previsione e il valore della visibilità
+	 */
 	public JSONObject getVisibility(String city) 
 	{
 		JSONObject obj=getGeneralWeather(city) ;
@@ -55,6 +77,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		obj2.put("Date", formattedTime);
 		return obj2;
 	}
+	/**
+	 * Metodo che serve a ritornare solo le informazioni riguardanti il vento in una città
+	 * @param city nome della città
+	 * @return un JSONObject contente solo la data della previsione e i valori del vento
+	 */
 	public JSONObject getWind(String city)
 	{
 		JSONObject obj=getGeneralWeather(city);
@@ -76,6 +103,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		obj3.put("Gust", gust);
 		return obj3;
 	}
+	/**
+	 * Metodo che serve a generare un oggetto di tipo City con le informazioni di OpenWeather
+	 * @param city il nome della città
+	 * @return l'oggetto City contenente le informazioni
+	 */
 	public City createCity(String city)
 	{
 		JSONObject obj=getGeneralWeather(city);
@@ -91,8 +123,12 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		City newCity=new City(coord,id,city,country);
 		return newCity;
 		
-		
 	}
+	/**
+	 * Metodo che serve a salvare in un oggetto City le informazioni riguardo la visibilità e il vento
+	 * @param city il nome della città
+	 * @return L'oggetto City corrispondente alla città con all'interno le informazioni riguardo vis. e vento
+	 */
 	public City getVisibilityAndWind(String city)
 	{
 		JSONObject obj=getGeneralWeather(city);
@@ -109,18 +145,19 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		int time=(int) obj.get("dt");
 		String formattedTime=UNIXConverter(time);
 		int visibility=(int) obj.get("visibility");
-		Weather prediction =new Weather((float)degrees,(float)gust,(float)speed,visibility,formattedTime);
-		//obj3.put("Speed", speed);
-		//obj3.put("Degrees", degrees);
-		//obj3.put("Gust", gust);
-		//obj3.put("Visibility", visibility);
-		//obj3.put("Date", formattedTime);
+		Weather prediction =new Weather((float)degrees,(float)gust,(float)speed,(int)visibility,formattedTime);
 		City cc=createCity(city);
 		cc.getPredictions().add(prediction);
 		return cc;
 
 	}
 
+	/**
+	 * Metodo che salva su un file di testo la previsone meteorologica attuale di una città
+	 * Ogni file viene salvato con questo nome: <nomecittà>.<yyyy-mm-dd>.txt
+	 * @param city il nome della città
+	 * @return il nome del file di testo 
+	 */
 	public String save(String city) throws IOException
 	{
 
@@ -171,7 +208,11 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 		return nFile;
 	}
-	// metodo per salvare ogni ora
+	/**
+	 * Metodo che ogni ora chiama il metodo save precedentemente descritto
+	 * @param city il nome della città 
+	 * @return Una stringa che ci informa che sta eseguendo i salvataggi
+	 */
 	public String savehour(String city)
 	{
 		ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
@@ -188,16 +229,17 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 					e.printStackTrace();
 				}
 			}
-		}, 0, 5, TimeUnit.SECONDS);
-		return "fatto";
+		}, 0, 5, TimeUnit.HOURS);
+		return "Salvataggio in corso...";
 	}
+	/**
+	 * Metodo che legge i dati da un file e li tramuta in un JSONObject
+	 * @param filename è il nome della città di cui si vuole ricercare il file
+	 * @param day è la data ,scritta nel formato yyyy-mm-dd, di cui cui si vogliono le previsoni. 
+	 */
 	public JSONObject readData(String fileName, String day) throws IOException
 	{
-		//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-		//String today = date.format(new Date());
 		String path=System.getProperty("user.dir")+"\\" + fileName+"."+day+".txt";
-		
-		//String path="C:\\Users\\bordo\\Desktop\\Esame\\EsameOOP\\"+fileName+".txt";
 		int cont=0;
 		int cont2=1;
 		String control="";
@@ -239,6 +281,4 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		jsonObject3.put("Predictions", jsonObject2);
 		return jsonObject3;	
 	}
-	
-
 }
