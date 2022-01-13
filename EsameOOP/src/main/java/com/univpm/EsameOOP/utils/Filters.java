@@ -224,7 +224,7 @@ public class Filters {
 	 * Metodo che serve a lanciare le eccezioni DayErrorException e FileNotFoundException	
 	 * La prima viene lanciata se: la data inserita è più vecchia di una settimana da oggi, la data non è inserita nel formato yyyy-mm-dd
 	 * le date non sono inserite in ordine cronologico
-	 * La seconda viene lanciata se: il file del tipo <cityname>.<dayI>(o <dayF>).txt non esiste
+	 * La seconda viene lanciata se: il file del tipo cityname.dayI(o dayF).txt non esiste
 	 * @param cityname nome della città
 	 * @param dayI giorno iniziale
 	 * @param dayF giorno finale

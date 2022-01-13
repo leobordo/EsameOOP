@@ -154,7 +154,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 	/**
 	 * Metodo che salva su un file di testo la previsone meteorologica attuale di una città
-	 * Ogni file viene salvato con questo nome: <nomecittà>.<yyyy-mm-dd>.txt
+	 * Ogni file viene salvato con questo nome: nomecittà.yyyy-mm-dd.txt
 	 * @param city il nome della città
 	 * @return il nome del file di testo 
 	 */
@@ -234,7 +234,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 	}
 	/**
 	 * Metodo che legge i dati da un file e li tramuta in un JSONObject
-	 * @param filename è il nome della città di cui si vuole ricercare il file
+	 * @param fileName è il nome della città di cui si vuole ricercare il file
 	 * @param day è la data ,scritta nel formato yyyy-mm-dd, di cui cui si vogliono le previsoni. 
 	 */
 	public JSONObject readData(String fileName, String day) throws IOException
