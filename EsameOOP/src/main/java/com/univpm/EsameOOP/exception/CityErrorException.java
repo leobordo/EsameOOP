@@ -15,7 +15,7 @@ public class CityErrorException extends Exception {
 
 	/**
 	 * Costruttore, setta il messaggio di errore
-	 * @param text
+	 * @param text messaggio di errore
 	 */
 	public CityErrorException(String text) {
 		super();

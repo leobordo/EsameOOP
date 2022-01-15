@@ -1,0 +1,6 @@
+Roma.2022-01-18.txt
+Speed : 0.45
+Degrees : 246.0
+Gust : 2.68
+Visibility : 10000
+Data : 2022-01-18 17:16:51 GMT

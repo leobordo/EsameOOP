@@ -1,0 +1,7 @@
+Ancona.2022-01-17.txt
+Speed : 2.24
+Degrees : 360.0
+Gust : 8.05
+Visibility : 10000
+Data : 2022-01-17 13:03:37 GMT
+

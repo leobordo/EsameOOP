@@ -15,7 +15,7 @@ public class CustomNumberErrorException extends NumberFormatException {
 
 	/**
 	 * Costruttore, setta il messaggio di errore
-	 * @param text
+	 * @param text messaggio di errore
 	 */	
 	public CustomNumberErrorException(String text) {
 			super();

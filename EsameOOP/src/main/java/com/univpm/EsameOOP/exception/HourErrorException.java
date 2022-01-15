@@ -14,7 +14,7 @@ public class HourErrorException extends Exception {
 
 	/**
 	 * Costruttore, setta il messaggio di errore
-	 * @param text
+	 * @param text messaggio di errore
 	 */
 	public HourErrorException(String text) {
 		super();

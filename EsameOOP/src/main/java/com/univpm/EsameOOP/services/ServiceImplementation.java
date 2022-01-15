@@ -155,6 +155,8 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 	/**
 	 * Metodo che salva su un file di testo la previsone meteorologica attuale di una città
 	 * Ogni file viene salvato con questo nome: nomecittà.yyyy-mm-dd.txt
+	 * Ogni volta che viene invocato save, viene eseguita una scansione ed un eventuale rimozione di file da parte
+	 * del metodo delete file
 	 * @param city il nome della città
 	 * @return il nome del file di testo 
 	 */
@@ -167,19 +169,22 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 
 
 		String nFile=city+"."+today+".txt";
-		String path=System.getProperty("user.dir")+nFile;
-
+		String path="";
+		if(city.equals("Roma")) {path=System.getProperty("user.dir")+"\\Roma\\";}
+		if(city.equals("Ancona")) {path=System.getProperty("user.dir")+"\\Ancona\\";}
+		deleteFile(path);
+		path=path+nFile;
 
 		City CITY=getVisibilityAndWind(city);
 		
 		
 		try{
 
-			File file_out=new File(nFile);
+			File file_out=new File(path);
 
 			if(file_out.exists())
 			{
-				FileOutputStream existing_file= new FileOutputStream(nFile,true);
+				FileOutputStream existing_file= new FileOutputStream(path,true);
 				PrintWriter scrivi= new PrintWriter(existing_file);
 				scrivi.append("Speed : "+CITY.getPredictions().get(0).getSpeed()+"\n");
 				scrivi.append("Degrees : "+CITY.getPredictions().get(0).getDegrees()+"\n");
@@ -239,7 +244,9 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 	 */
 	public JSONObject readData(String fileName, String day) throws IOException
 	{
-		String path=System.getProperty("user.dir")+"\\" + fileName+"."+day+".txt";
+		String path="";
+		if(fileName.equals("Roma")) path=System.getProperty("user.dir")+"\\Roma\\" + fileName+"."+day+".txt";
+		if(fileName.equals("Ancona")) path=System.getProperty("user.dir")+"\\Ancona\\" + fileName+"."+day+".txt";
 		int cont=0;
 		int cont2=1;
 		String control="";
@@ -281,4 +288,27 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		jsonObject3.put("Predictions", jsonObject2);
 		return jsonObject3;	
 	}
+	/**
+	 * Metodo che serve ad eliminare i file contenenti le previsioni se, e solo se, sono più vecchi di 7 giorni
+	 * @param path è la directory relativa ai file da esaminare
+	 * @return una stringa che dice se è stato eliminato un file
+	 */
+	public String deleteFile(String path)
+	{
+		File x=new File(path);
+		File[] logFiles=x.listFiles();
+		if(logFiles.length>=7) {
+		long oldestDate= Long.MAX_VALUE;
+		File oldestFile=null;
+		for(File f: logFiles){
+	            if(f.lastModified() < oldestDate){
+	                oldestDate = f.lastModified();
+	                oldestFile = f;
+	            }
+	            
+	}
+		if(oldestFile.delete()) return "file deleted";
+	}
+		return "no files deleted";
+}
 }

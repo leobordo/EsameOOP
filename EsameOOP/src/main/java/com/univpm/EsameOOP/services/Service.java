@@ -23,4 +23,5 @@ public interface Service {
 	public abstract String savehour(String city);
 	public abstract JSONObject readData(String fileName, String day) throws IOException;
 	public abstract City createCity(String city);
+	public abstract String deleteFile(String path);
 }

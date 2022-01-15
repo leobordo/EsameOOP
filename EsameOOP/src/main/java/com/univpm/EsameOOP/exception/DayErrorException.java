@@ -15,7 +15,7 @@ public class DayErrorException extends Exception {
 
 	/**
 	 * Costruttore, setta il messaggio di errore
-	 * @param text
+	 * @param text messaggio di errore
 	 */
 	public DayErrorException(String text) {
 		super();
