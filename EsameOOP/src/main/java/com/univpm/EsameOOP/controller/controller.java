@@ -102,6 +102,9 @@ public class controller {
 	 * @throws CustomNumberErrorException eccezione che viene lanciata se vengono usate lettere anzichè numeri, eredita da NumberFormatException
 	 * @throws NumberFormatException eccezione che viene gestita con l'eccezione personalizzata CustomNumberErrorException
 	 */
+	//le rotte precedenti non contengono eccezioni personalizzate perchè sono al solo scopo didattico e illustrativo,
+	//dunque si presume che chi le utilizzi non commetta errori nell'inserimento dei vari parametri.
+	//Se il programma dovesse effettivamente essere usato pubblicamente tali rotte andrebbero tolte.
 	@GetMapping(value="/Filters")
 	public ResponseEntity<Object> choice(@RequestParam String cityname, String dayI, String dayF, String period) 
 	

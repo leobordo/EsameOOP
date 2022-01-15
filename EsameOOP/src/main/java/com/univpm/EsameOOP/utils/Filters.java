@@ -45,21 +45,24 @@ public class Filters {
 			
 			JSONObject toReturn=new JSONObject();
 			Statistics s=new Statistics();
+			//le righe sopra servono a risolvere errori su postman, da qui in poi si fa
+			//la selezione di quali filtri usare e come usarli
 			if(dayF==null && period==null) {
 				
+				//si filtrano le statistiche in una giornata
 				toReturn=s.dailyStats(cityname, dayI);
 			}else
 				{if(dayF==null)
-					if(period==null)toReturn=s.dailyStats(cityname, dayI);
-					else
-					{
-						
+				
+						//si filtrano le statistiche in una fascia oraria
 						toReturn=s.dailyStatsPlus(cityname, dayI, period);
-					}
 						
 					
 				else 
 				{
+					// da qui in poi si eseguono i filtraggi delle statistiche sulle fasce di giorni
+					// e sulle fasce orarie nelle fasce di giorni.
+					// si utilizza spesso l'operatore condizionale ?...:... per vedere se la fascia oraria(period) è nulla.
 					JSONObject obj=new JSONObject();
 					int i=Integer.valueOf(dayI.substring(8));
 					int cont=0;
@@ -101,7 +104,7 @@ public class Filters {
 						}
 					}
 					else {
-						String Year=dayI.substring(0,5);
+						String Year=dayI.substring(0,5); //se i giorni non sono nello stesso mese si tiene solo l'anno
 						int year=Integer.valueOf(dayI.substring(0,4));
 						int month=Integer.valueOf(dayI.substring(5, 7));
 						while (i!=Integer.valueOf(dayF.substring(8))+1) {
@@ -117,7 +120,8 @@ public class Filters {
 								}
 								}
 							}
-					if(month==1||month==3||month==5||month==7||month==8||month==10)
+						//bisogna controllare di volta in volta in quale mese si sta operando per far progredire normalmente i giorni
+						if(month==1||month==3||month==5||month==7||month==8||month==10)
 					{
 							if(i==31) ok=true;
 							else {
