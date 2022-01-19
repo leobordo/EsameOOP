@@ -1,126 +1,126 @@
-Roma.2022-01-17.txt
+Ancona.2022-01-16.txt
 Speed : 1.0
 Degrees : 360.0
 Gust : 1.0
 Visibility : 10000
-Data : 2022-01-17 00:03:37 GMT
+Data : 2022-01-16 00:03:37 GMT
 Speed : 2.0
 Degrees : 360.0
 Gust : 2.0
 Visibility : 10000
-Data : 2022-01-17 01:03:37 GMT
+Data : 2022-01-16 01:03:37 GMT
 Speed : 3.0
 Degrees : 360.0
 Gust : 3.0
 Visibility : 10000
-Data : 2022-01-17 02:03:37 GMT
+Data : 2022-01-16 02:03:37 GMT
 Speed : 4.0
 Degrees : 360.0
 Gust : 4.0
 Visibility : 10000
-Data : 2022-01-17 03:03:37 GMT
+Data : 2022-01-16 03:03:37 GMT
 Speed : 5.0
 Degrees : 180.0
 Gust : 5.0
 Visibility : 10000
-Data : 2022-01-17 04:03:37 GMT
+Data : 2022-01-16 04:03:37 GMT
 Speed : 6.0
 Degrees : 140.0
 Gust : 6.0
 Visibility : 10000
-Data : 2022-01-17 05:03:37 GMT
+Data : 2022-01-16 05:03:37 GMT
 Speed : 7.0
 Degrees : 360.0
 Gust : 7.0
 Visibility : 10000
-Data : 2022-01-17 06:03:37 GMT
+Data : 2022-01-16 06:03:37 GMT
 Speed : 8.0
 Degrees : 360.0
 Gust : 8.0
 Visibility : 10000
-Data : 2022-01-17 07:03:37 GMT
+Data : 2022-01-16 07:03:37 GMT
 Speed : 9.0
 Degrees : 360.0
 Gust : 9.0
 Visibility : 10000
-Data : 2022-01-17 08:03:37 GMT
+Data : 2022-01-16 08:03:37 GMT
 Speed : 10.0
 Degrees : 360.0
 Gust : 10.0
 Visibility : 10000
-Data : 2022-01-17 09:03:37 GMT
+Data : 2022-01-16 09:03:37 GMT
 Speed : 11.0
 Degrees : 360.0
 Gust : 11.0
 Visibility : 10000
-Data : 2022-01-17 10:03:37 GMT
+Data : 2022-01-16 10:03:37 GMT
 Speed : 1.0
 Degrees : 360.0
 Gust : 1.0
 Visibility : 10000
-Data : 2022-01-17 11:03:37 GMT
+Data : 2022-01-16 11:03:37 GMT
 Speed : 2.0
 Degrees : 360.0
 Gust : 2.0
 Visibility : 10000
-Data : 2022-01-17 12:03:37 GMT
+Data : 2022-01-16 12:03:37 GMT
 Speed : 3.0
 Degrees : 360.0
 Gust : 3.0
 Visibility : 10000
-Data : 2022-01-17 13:03:37 GMT
+Data : 2022-01-16 13:03:37 GMT
 Speed : 4.0
 Degrees : 360.0
 Gust : 4.0
 Visibility : 10000
-Data : 2022-01-17 14:03:37 GMT
+Data : 2022-01-16 14:03:37 GMT
 Speed : 5.0
 Degrees : 180.0
 Gust : 5.0
 Visibility : 10000
-Data : 2022-01-17 15:03:37 GMT
+Data : 2022-01-16 15:03:37 GMT
 Speed : 6.0
 Degrees : 140.0
 Gust : 6.0
 Visibility : 10000
-Data : 2022-01-17 16:03:37 GMT
+Data : 2022-01-16 16:03:37 GMT
 Speed : 7.0
 Degrees : 360.0
 Gust : 7.0
 Visibility : 10000
-Data : 2022-01-17 17:03:37 GMT
+Data : 2022-01-16 17:03:37 GMT
 Speed : 8.0
 Degrees : 360.0
 Gust : 8.0
 Visibility : 10000
-Data : 2022-01-17 18:03:37 GMT
+Data : 2022-01-16 18:03:37 GMT
 Speed : 9.0
 Degrees : 360.0
 Gust : 9.0
 Visibility : 10000
-Data : 2022-01-17 19:03:37 GMT
+Data : 2022-01-16 19:03:37 GMT
 Speed : 10.0
 Degrees : 360.0
 Gust : 10.0
 Visibility : 10000
-Data : 2022-01-17 20:03:37 GMT
+Data : 2022-01-16 20:03:37 GMT
 Speed : 11.0
 Degrees : 360.0
 Gust : 11.0
 Visibility : 10000
-Data : 2022-01-17 21:03:37 GMT
+Data : 2022-01-16 21:03:37 GMT
 Speed : 12.0
 Degrees : 360.0
 Gust : 12.0
 Visibility : 10000
-Data : 2022-01-17 22:03:37 GMT
+Data : 2022-01-16 22:03:37 GMT
 Speed : 0.0
 Degrees : 360.0
 Gust : 0.0
 Visibility : 10000
-Data : 2022-01-17 23:03:37 GMT
+Data : 2022-01-16 23:03:37 GMT
 Speed : 0.0
 Degrees : 360.0
 Gust : 0.0
 Visibility : 10000
-Data : 2022-01-17 24:03:37 GMT
+Data : 2022-01-16 24:03:37 GMT

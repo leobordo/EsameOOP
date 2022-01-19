@@ -1,4 +1,4 @@
-Roma.2022-01-17.txt
+Ancona.2022-01-17.txt
 Speed : 1.0
 Degrees : 360.0
 Gust : 1.0

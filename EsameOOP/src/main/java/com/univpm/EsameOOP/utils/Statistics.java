@@ -1,13 +1,11 @@
 package com.univpm.EsameOOP.utils;
-import  com.univpm.EsameOOP.*;
+
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import com.univpm.EsameOOP.exception.*;
-import  com.univpm.EsameOOP.model.*;
+
 import com.univpm.EsameOOP.services.ServiceImplementation;
 
 
@@ -77,7 +75,7 @@ public class Statistics {
 
 		return objreturn;
 	}
-	
+
 
 	/**
 	 * Metodo che calcola le statistiche di vento e raffiche su una certa fascia oraria.
@@ -90,11 +88,11 @@ public class Statistics {
 	public JSONObject dailyStatsPlus(String cityname, String day,String period)
 	{
 		ServiceImplementation s= new ServiceImplementation();
-		
-		
+
+
 		double hourI=Double.valueOf(period.substring(0, 2));
 		Double hourF=Double.valueOf(period.substring(3));
-			
+
 
 
 		int i=(int)hourI;
