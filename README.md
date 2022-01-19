@@ -1,10 +1,10 @@
-# project oop
+# Project OOP
 
-## Wheaterapp
+## KnowWind
 
  l'applicazione serve a fornire informazioni dettagliate 
  sul vento (raffica gradi e velocità), e sulla visibilità di 2 città(Roma e Ancona).
- Inoltre è possibile ricevere tali informazioni per un certo periodo di giorni e orario
+ Inoltre è possibile ricevere tali informazioni per un certo periodo di giorni e orario.
 
 ### INDICE
 
