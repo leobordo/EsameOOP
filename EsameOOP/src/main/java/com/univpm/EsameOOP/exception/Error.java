@@ -20,7 +20,7 @@ public class Error {
 	public void ErrorCity(String cityname) throws CityErrorException
 		{
 	
-			if(cityname.isEmpty()) throw new CityErrorException("inserire il nome della città");
+			if(cityname==null) throw new CityErrorException("inserire il nome della città");
 			if(cityname.charAt(0)<65||cityname.charAt(0)>90) throw new CityErrorException("inserire il nome della città con la iniziale maiuscola");
 			
 			if(!(cityname.equals("Ancona")||cityname.equals("Roma"))) throw new CityErrorException("il nome della città non è in elenco (usa Roma o Ancona)");
@@ -39,21 +39,30 @@ public class Error {
 	 */
 	public void ErrorDays(String cityname, String dayI, String dayF) throws DayErrorException, FileNotFoundException
 		{
-			
-				String path=System.getProperty("user.dir")+"\\" + cityname+"."+dayI+".txt";
-				
+		int temp;
+		if(dayI==null) throw new DayErrorException("devi inserire un giorno di inizio");
+		
+				String path=System.getProperty("user.dir")+"\\"+cityname+"\\";
 				String nFileI=cityname+"."+dayI+".txt";
-				String nFileF=cityname+"."+dayF+".txt";
-				File file_out=new File(nFileI);
+				
+				File file_out=new File(path+nFileI);
 				if(dayI.length()!=10 ) throw new DayErrorException("inserire la data dayI come in questo esempio: yyyy-mm-dd");
+				temp=Integer.valueOf(dayI.substring(0,4));
+				temp=Integer.valueOf(dayI.substring(5,7));
+				temp=Integer.valueOf(dayI.substring(8));
 				if(!file_out.exists()) throw new DayErrorException("inserire una data vecchia non più di 7 giorni e non dopo oggi ");
 				
 				
 				
 				
 				if(!(dayF==null)) {
-					file_out=new File(nFileF);
+					String nFileF=cityname+"."+dayF+".txt";
+					file_out=new File(path+nFileF);
 					if(dayF.length()!=10 ) throw new DayErrorException("inserire la data dayF come in questo esempio: yyyy-mm-dd");
+					temp=Integer.valueOf(dayF.substring(0,4));
+					temp=Integer.valueOf(dayF.substring(5,7));
+					temp=Integer.valueOf(dayF.substring(8));
+					if(dayI.equals(dayF)) throw new DayErrorException("inserire due giorni diversi");
 					if(!file_out.exists()) throw new DayErrorException("inserire una data vecchia non più di 7 giorni e non dopo oggi");
 					
 				if(Integer.valueOf(dayI.substring(0, 4))>Integer.valueOf(dayF.substring(0, 4))) throw new DayErrorException("inserire le date in ordine cronologico ");

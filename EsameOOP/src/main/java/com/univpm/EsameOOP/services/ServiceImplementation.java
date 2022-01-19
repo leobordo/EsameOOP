@@ -234,7 +234,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 					e.printStackTrace();
 				}
 			}
-		}, 0, 5, TimeUnit.HOURS);
+		}, 0, 1, TimeUnit.HOURS);
 		return "Salvataggio in corso...";
 	}
 	/**
@@ -244,9 +244,8 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 	 */
 	public JSONObject readData(String fileName, String day) throws IOException
 	{
-		String path="";
-		if(fileName.equals("Roma")) path=System.getProperty("user.dir")+"\\Roma\\" + fileName+"."+day+".txt";
-		if(fileName.equals("Ancona")) path=System.getProperty("user.dir")+"\\Ancona\\" + fileName+"."+day+".txt";
+		
+		String path=System.getProperty("user.dir")+"\\"+fileName+"\\"+fileName+"."+day+".txt";
 		int cont=0;
 		int cont2=1;
 		String control="";
@@ -256,8 +255,9 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 		JSONArray jsonObject2=new JSONArray();
 		jsonObject3.put("FileName", fileName+"."+day+".txt");
 		BufferedReader filebuf= new BufferedReader(new FileReader(path));
-		String [] words;
+		String [] words=new String[9];
 		try {control=filebuf.readLine();
+		
 
 		while(control!=null)	
 		{
@@ -268,8 +268,7 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 			{ 
 				if(cont%5==1)  jsonObject=new JSONObject();
 
-				words=control.split(" "); 
-
+				words=control.split(" ");
 				if(cont%5==0)jsonObject.put(words[0], words[2]+" "+words[3]);
 				else jsonObject.put(words[0], words[2]);
 
@@ -307,8 +306,8 @@ public class ServiceImplementation implements com.univpm.EsameOOP.services.Servi
 	            }
 	            
 	}
-		if(oldestFile.delete()) return "file deleted";
+		if(oldestFile.delete()) return "file eliminato";
 	}
-		return "no files deleted";
+		return "nessun file eliminato";
 }
 }

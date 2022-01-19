@@ -106,34 +106,40 @@ public class controller {
 	//dunque si presume che chi le utilizzi non commetta errori nell'inserimento dei vari parametri.
 	//Se il programma dovesse effettivamente essere usato pubblicamente tali rotte andrebbero tolte.
 	@GetMapping(value="/Filters")
-	public ResponseEntity<Object> choice(@RequestParam String cityname, String dayI, String dayF, String period) 
-	
+
+	public ResponseEntity<Object> choice(@RequestParam (name="cityname" ,required=false)String name, String dayI, String dayF, String period)
+
+
+
 	throws HourErrorException,CityErrorException,DayErrorException, IOException, CustomNumberErrorException, NumberFormatException
 	{
-		
+
+
 	try {
-		
-		return new ResponseEntity<> (f.choice(cityname, dayI, dayF, period), HttpStatus.OK);
-	}catch(NumberFormatException e)
+
+	return new ResponseEntity<> (f.choice(name, dayI, dayF, period), HttpStatus.OK);
+	}
+	catch(CityErrorException e)
 	{
-		
-		e= new CustomNumberErrorException("usa solo numeri");
-		
-		return new ResponseEntity<>(((CustomNumberErrorException) e).getText(),HttpStatus.BAD_REQUEST);
+	return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
+	}
+	catch(NumberFormatException e)
+	{
+
+	e= new CustomNumberErrorException("usa solo numeri");
+
+	return new ResponseEntity<>(((CustomNumberErrorException) e).getText(),HttpStatus.BAD_REQUEST);
 	}
 	catch(HourErrorException e)
 	{
-		return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
+	return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
 	}
-	
-	catch(CityErrorException e)
-	{
-		return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
-	}
+
+
 	catch(DayErrorException e)
 	{
-		return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
+	return new ResponseEntity<>(e.getText(),HttpStatus.BAD_REQUEST);
 	}
-		
+
 	}
 }

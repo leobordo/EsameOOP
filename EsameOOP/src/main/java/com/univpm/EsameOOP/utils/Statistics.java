@@ -69,11 +69,11 @@ public class Statistics {
 
 		JSONObject objreturn=new JSONObject();
 		objreturn.put("velocità media del vento ",speed_av);
-		objreturn.put("raffica media  del vento ",gust_av);
-		objreturn.put("velocità massima  del vento ",speed_max);
-		objreturn.put("velocità minima  del vento ",speed_min);
-		objreturn.put("raffica massima  del vento ",gust_max);
-		objreturn.put("raffica minim  del vento ",gust_min);
+		objreturn.put("raffica media del vento ",gust_av);
+		objreturn.put("velocità massima del vento ",speed_max);
+		objreturn.put("velocità minima del vento ",speed_min);
+		objreturn.put("raffica massima del vento ",gust_max);
+		objreturn.put("raffica minima del vento ",gust_min);
 
 		return objreturn;
 	}
@@ -119,7 +119,7 @@ public class Statistics {
 		}	
 
 		while(i<hourF) 
-		{
+		{	
 			JSONObject obj4=(JSONObject)obj2.get(i);
 
 			sptemp=Double.valueOf((String)obj4.get("Speed"));//valueOf casta una var. string in Double,(String) casta obj4 da Object in string
@@ -140,11 +140,11 @@ public class Statistics {
 
 		JSONObject objreturn=new JSONObject();
 		objreturn.put("velocità media del vento ",speed_av);
-		objreturn.put("raffica media  del vento ",gust_av);
-		objreturn.put("velocità massima  del vento ",speed_max);
-		objreturn.put("velocità minima  del vento ",speed_min);
-		objreturn.put("raffica massima  del vento ",gust_max);
-		objreturn.put("raffica minim  del vento ",gust_min);
+		objreturn.put("raffica media del vento ",gust_av);
+		objreturn.put("velocità massima del vento ",speed_max);
+		objreturn.put("velocità minima del vento ",speed_min);
+		objreturn.put("raffica massima del vento ",gust_max);
+		objreturn.put("raffica minima del vento ",gust_min);
 		return objreturn;
 	}
 

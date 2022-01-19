@@ -33,6 +33,7 @@ public class Filters {
 	 */
 	public JSONObject choice(String cityname, String dayI ,String dayF, String period) throws HourErrorException ,CityErrorException, DayErrorException, FileNotFoundException
 		{
+			if(!(cityname==null)&&cityname.isEmpty()) cityname=null;
 			Error e=new Error();
 			e.ErrorCity(cityname);
 			if(!(dayF==null)&&dayF.isEmpty()) dayF=null;
@@ -87,16 +88,16 @@ public class Filters {
 							else if(i==Integer.valueOf(dayF.substring(8))) obj=(period==null?s.dailyStats(cityname, dayF):s.dailyStatsPlus(cityname, dayF, period)); //controlla se i è il g finale
 							else if(i<10) obj=(period==null?s.dailyStats(cityname, MonthYear+"0"+i):s.dailyStatsPlus(cityname, MonthYear+"0"+i, period));
 							else  obj=(period==null?s.dailyStats(cityname, MonthYear+i):s.dailyStatsPlus(cityname, MonthYear+i, period));
-							sptemp=(double) obj.get("velocità media del vento");
-							gutemp=(double) obj.get("raffica media del vento");
+							sptemp=(double) obj.get("velocità media del vento ");
+							gutemp=(double) obj.get("raffica media del vento ");
 							spAv+=sptemp;
 							gustAv+=gutemp;
-							sptemp=(double) obj.get("velocità massima del vento");
-							gutemp=(double) obj.get("raffica massima del vento");
+							sptemp=(double) obj.get("velocità massima del vento ");
+							gutemp=(double) obj.get("raffica massima del vento ");
 							if(sptemp>spMax)spMax=sptemp;
 							if(gutemp>gustMax)gustMax=gutemp;
-							sptemp=(double) obj.get("velocità minima del vento");
-							gutemp=(double) obj.get("raffica minima del vento");
+							sptemp=(double) obj.get("velocità minima del vento ");
+							gutemp=(double) obj.get("raffica minima del vento ");
 							if(sptemp<spMin)spMin=sptemp;
 							if(gutemp<gustMin)gustMin=gutemp;
 							i++;
@@ -170,16 +171,16 @@ public class Filters {
 							}
 							}		
 					}
-					sptemp=(double) obj.get("velocità media del vento");
-					gutemp=(double) obj.get("raffica media del vento");
+					sptemp=(double) obj.get("velocità media del vento ");
+					gutemp=(double) obj.get("raffica media del vento ");
 					spAv+=sptemp;
 					gustAv+=gutemp;
-					sptemp=(double) obj.get("velocità massima del vento");
-					gutemp=(double) obj.get("raffica massima del vento");
+					sptemp=(double) obj.get("velocità massima del vento ");
+					gutemp=(double) obj.get("raffica massima del vento ");
 					if(sptemp>spMax)spMax=sptemp;
 					if(gutemp>gustMax)gustMax=gutemp;
-					sptemp=(double) obj.get("velocità minima del vento");
-					gutemp=(double) obj.get("raffica minima del vento");
+					sptemp=(double) obj.get("velocità minima del vento ");
+					gutemp=(double) obj.get("raffica minima del vento ");
 					if(sptemp<spMin)spMin=sptemp;
 					if(gutemp<gustMin)gustMin=gutemp;
 					if(ok) {
