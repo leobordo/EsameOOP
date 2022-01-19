@@ -66,10 +66,10 @@ private Filters f;
 	 * Test che verifica il corretto utilizzo dell'eccezione DayErrorException
 	 */
 	@Test
-	@DisplayName("Eccezione DayErrorException,per dayF nel giusto formato ma con valori casuali, generata correttamente")
+	@DisplayName("Eccezione DayErrorException,per dayF nel giusto formato ma con valori non in ordine cronologico, generata correttamente")
 	void test3() {
-		DayErrorException e=assertThrows(DayErrorException.class,()->{f.choice("Roma", "2022-01-17", "20-2201-ab", null);});
-		assertEquals("inserire una data vecchia non più di 7 giorni e non dopo oggi",e.getText());
+		DayErrorException e=assertThrows(DayErrorException.class,()->{f.choice("Roma", "2022-01-18", "2022-01-17", null);});
+		assertEquals("inserire le date in ordine cronologico ",e.getText());
 		
 	}
 	

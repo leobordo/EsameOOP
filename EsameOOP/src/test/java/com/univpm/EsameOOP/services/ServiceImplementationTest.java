@@ -61,7 +61,7 @@ public class ServiceImplementationTest {
 	@DisplayName("Eliminazione corretta")
 	void elimina() {
 		String path=System.getProperty("user.dir")+"\\Roma\\";
-		assertEquals("no files deleted",s.deleteFile(path));
+		assertEquals("nessun file eliminato",s.deleteFile(path));
 	}
 	
 	
